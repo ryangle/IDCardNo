@@ -2,6 +2,27 @@
 
 ## 通过身份证号码解析的信息
 
+* 校验：
+
+```csharp
+
+ var verify = IDCardHelper.TryVerify("610402196903194412", out var error);
+
+```
+
+`verify`等于`true`时校验通过，`error`为`null`;
+`verify`等于`false`时，`error`为错误原因；
+
+* 解析：
+
+```csharp
+
+ var idCard = IDCardHelper.Parse("14010319660730424x");
+
+```
+
+结果示例：
+
 ```json
 {
     "Province":"山西省",
