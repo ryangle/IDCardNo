@@ -5,41 +5,13 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ryangle.IDCardNo
+namespace IDCardNo
 {
-    public class IDCardHelper
+    public partial class IDCardHelper
     {
-        private static Dictionary<string, string> _Province = new Dictionary<string, string>();
-        private static Dictionary<string, string> _Prefecture = new Dictionary<string, string>();
-        private static Dictionary<string, string> _County = new Dictionary<string, string>();
         static IDCardHelper()
         {
-            InitialData();
-        }
-        private static void InitialData()
-        {
-            var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("IDCardNo.DivisionCode.csv"))
-            {
-                var streamReader = new StreamReader(stream, Encoding.UTF8, true);
-                while (!streamReader.EndOfStream)
-                {
-                    var row = streamReader.ReadLine().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (row.Length < 2) { continue; };
-                    switch (row[0].Length)
-                    {
-                        case 2:
-                            _Province[row[0]] = row[1];
-                            break;
-                        case 4:
-                            _Prefecture[row[0]] = row[1];
-                            break;
-                        case 6:
-                            _County[row[0]] = row[1];
-                            break;
-                    }
-                }
-            }
+
         }
         public static IDCardInfo Parse(string id)
         {
@@ -65,9 +37,9 @@ namespace ryangle.IDCardNo
 
             return new IDCardInfo
             {
-                County = _County[region_code],
-                Prefecture = _Prefecture[region_code.Substring(0, 4)],
-                Province = _Province[region_code.Substring(0, 2)],
+                County = DivisionCodeData[region_code],
+                Prefecture = DivisionCodeData[region_code.Substring(0, 4)],
+                Province = DivisionCodeData[region_code.Substring(0, 2)],
                 Birthday = DateTime.ParseExact(str_birthday, "yyyyMMdd", null),
                 Gender = gender_code % 2 == 0 ? 0 : 1
             };
@@ -113,7 +85,7 @@ namespace ryangle.IDCardNo
                 return false;
             }
 
-            if (!_County.ContainsKey(region_code))
+            if (!DivisionCodeData.ContainsKey(region_code))
             {
                 error = "区域码错误";
                 return false;

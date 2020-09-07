@@ -1,4 +1,4 @@
-using ryangle.IDCardNo;
+using IDCardNo;
 using System;
 using Xunit;
 

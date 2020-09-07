@@ -4,12 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="DivisionCode.csv" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="DivisionCode.csv" />
-  </ItemGroup>
-
 </Project>

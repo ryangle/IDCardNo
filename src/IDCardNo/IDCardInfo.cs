@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ryangle.IDCardNo
+namespace IDCardNo
 {
     public class IDCardInfo
     {
