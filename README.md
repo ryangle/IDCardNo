@@ -33,6 +33,6 @@
 }
 ```
 
-## 行政去换代码来源
+## 行政区划代码来源
 
 民政部网站公开数据：http://www.mca.gov.cn/article/sj/xzqh/
