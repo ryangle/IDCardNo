@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03F0F60D-8F0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDCardNo", "src\IDCardNo\IDCardNo.csproj", "{E2C552B1-FD2E-43F6-BD27-044CECB379A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDCrdNo.Test", "src\IDCrdNo.Test\IDCrdNo.Test.csproj", "{6D7D2F50-1C12-4394-9200-BB6D1A3F9550}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDCardNo.Test", "src\IDCardNo.Test\IDCardNo.Test.csproj", "{6D7D2F50-1C12-4394-9200-BB6D1A3F9550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

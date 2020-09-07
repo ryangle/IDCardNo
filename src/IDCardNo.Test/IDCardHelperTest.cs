@@ -2,7 +2,7 @@ using IDCardNo;
 using System;
 using Xunit;
 
-namespace IDCrdNo.Test
+namespace IDCardNo.Test
 {
     public class IDCardHelperTest
     {
