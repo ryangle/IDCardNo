@@ -60,22 +60,32 @@ namespace IDCardNo
         public static bool TryVerify(string id, out string error)
         {
             error = null;
-            if (string.IsNullOrEmpty(id)) error = "空身份证号";
-            //if (!Regex.IsMatch(id, @"^\d+$")) error = "格式错误";
-
-            if (error != null) return false;
+            if (string.IsNullOrEmpty(id))
+            {
+                error = "空身份证号";
+            }
+            if (!Regex.IsMatch(id, @"^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$"))
+            {
+                error = "格式错误";
+            }
 
             string region_code;
             string str_birthday;
             if (id.Length == 15)
             {
-                if (!VerifyIDCard1G(id)) error = "校验位错误";
+                if (!VerifyIDCard1G(id))
+                {
+                    error = "校验位错误";
+                }
                 region_code = id.Substring(0, 6);
                 str_birthday = "19" + id.Substring(6, 6);
             }
             else if (id.Length == 18)
             {
-                if (!VerifyIDCard2G(id)) error = "校验位错误";
+                if (!VerifyIDCard2G(id))
+                {
+                    error = "校验位错误";
+                };
                 region_code = id.Substring(0, 6);
                 str_birthday = id.Substring(6, 8);
             }
@@ -98,65 +108,23 @@ namespace IDCardNo
                 error = "出生日期错误";
                 return false;
             }
+            if (error != null)
+            {
+                return false;
+            }
             return true;
         }
         private static bool VerifyIDCard2G(string id)
         {
-            //var weights = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
-            //var checks = "10X98765432";
-            //var val = 0;
-            //for (var i = 0; i < 17; i++)
-            //{
-            //    val += (id[i] - '0') * weights[i];
-            //}
-            //return id[17] == checks[val % 11];
-
-            long n = 0;
-
-            if (long.TryParse(id.Remove(17), out n) == false || n < Math.Pow(10, 16) || long.TryParse(id.Replace('x', '0').Replace('X', '0'), out n) == false)
+            id = id.ToUpper();
+            var weights = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+            var checks = "10X98765432";
+            var val = 0;
+            for (var i = 0; i < 17; i++)
             {
-                return false;//数字验证
+                val += (id[i] - '0') * weights[i];
             }
-
-            string address = "11x22x35x44x53x12x23x36x45x54x13x31x37x46x61x14x32x41x50x62x15x33x42x51x63x21x34x43x52x64x65x71x81x82x91";
-
-            if (address.IndexOf(id.Remove(2)) == -1)
-            {
-                return false;//省份验证
-            }
-
-            string birth = id.Substring(6, 8).Insert(6, "-").Insert(4, "-");
-
-            DateTime time = new DateTime();
-
-            if (DateTime.TryParse(birth, out time) == false)
-            {
-                return false;//生日验证
-            }
-
-            string[] arrVarifyCode = ("1,0,x,9,8,7,6,5,4,3,2").Split(',');
-
-            string[] Wi = ("7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2").Split(',');
-
-            char[] Ai = id.Remove(17).ToCharArray();
-
-            int sum = 0;
-
-            for (int i = 0; i < 17; i++)
-            {
-                sum += int.Parse(Wi[i]) * int.Parse(Ai[i].ToString());
-            }
-
-            int y = -1;
-
-            Math.DivRem(sum, 11, out y);
-
-            if (arrVarifyCode[y] != id.Substring(17, 1).ToLower())
-            {
-                return false;//校验码验证
-            }
-
-            return true;//符合GB11643-1999标准
+            return id[17] == checks[val % 11];
         }
         private static bool VerifyIDCard1G(string id)
         {
