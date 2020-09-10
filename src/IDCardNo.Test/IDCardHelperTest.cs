@@ -10,7 +10,7 @@ namespace IDCardNo.Test
         public void Parse_Test()
         {
             var idCard = IDCardHelper.Parse("14010319660730424x");
-            Assert.Equal("山西省太原市北城区", idCard.County);
+            Assert.Equal("太原市北城区", idCard.County);
             Assert.Equal(new DateTime(1966, 7, 30), idCard.Birthday);
         }
 
