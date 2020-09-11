@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItem", "SolutionIte
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "src\ConsoleApp1\ConsoleApp1.csproj", "{80CBEC85-0EDC-442E-819B-70A32D75F097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{6D7D2F50-1C12-4394-9200-BB6D1A3F9550}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D7D2F50-1C12-4394-9200-BB6D1A3F9550}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D7D2F50-1C12-4394-9200-BB6D1A3F9550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CBEC85-0EDC-442E-819B-70A32D75F097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CBEC85-0EDC-442E-819B-70A32D75F097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CBEC85-0EDC-442E-819B-70A32D75F097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CBEC85-0EDC-442E-819B-70A32D75F097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E2C552B1-FD2E-43F6-BD27-044CECB379A1} = {03F0F60D-8F0B-4B1E-A2E9-2EE5BE0C098E}
 		{6D7D2F50-1C12-4394-9200-BB6D1A3F9550} = {03F0F60D-8F0B-4B1E-A2E9-2EE5BE0C098E}
+		{80CBEC85-0EDC-442E-819B-70A32D75F097} = {03F0F60D-8F0B-4B1E-A2E9-2EE5BE0C098E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B6D32C0-91B8-4186-8BB8-6B42D2C2A36C}
