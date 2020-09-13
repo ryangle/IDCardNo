@@ -1,4 +1,3 @@
-using IDCardNo;
 using System;
 using Xunit;
 
@@ -24,6 +23,22 @@ namespace IDCardNo.Test
             var verify2 = IDCardHelper.TryVerify("610402196903194413", out var error2);
             Assert.Equal("校验位错误",error2);
             Assert.False(verify2);
+        }
+
+        [Fact]
+        public void TryVerify15_Test()
+        {
+            var verify = IDCardHelper.TryVerify("632123820927051", out var error);
+            Assert.Null(error);
+            Assert.True(verify);
+        }
+
+        [Fact]
+        public void Parse15_Test()
+        {
+            var idCard = IDCardHelper.Parse("632123820927051");
+            Assert.Equal("乐都县", idCard.County);
+            Assert.Equal(new DateTime(1982, 9, 27), idCard.Birthday);
         }
     }
 }
